@@ -19,19 +19,20 @@ public class Welcome extends AppCompatActivity {
         loginDataBaseAdapter = new LoginDataBaseAdapter(this);
         loginDataBaseAdapter.open();
 
-        Cursor cursor = loginDataBaseAdapter.fetch();
-        cursor.moveToFirst();
-        final TextView studentName = (TextView) getActivity().findViewById(R.id.nameOfStudent);
-        studentName.settext(cursor.getString(0));
 
-        TextView txtname = (TextView) findViewById(R.id.textView);
+
+        TextView txtname = findViewById(R.id.textView);
         Intent intent = getIntent();
         String loginName = intent.getStringExtra("Name");
         txtname.setText("Welcome, " + loginName);
 
-        TextView txtgender = (TextView) findViewById(R.id.textView2);
+        String cursor = loginDataBaseAdapter.fetch(loginName);
+        final TextView details = findViewById(R.id.textView2);
+        details.setText(cursor);
+
+        /*TextView txtgender = (TextView) findViewById(R.id.textView2);
         String loginPassword = intent.getStringExtra("Password");
-        txtgender.setText("Password: " + loginPassword);
+        txtgender.setText("Password: " + loginPassword);*/
     }
 
     public void logOut(View view){
