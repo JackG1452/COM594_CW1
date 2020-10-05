@@ -67,12 +67,4 @@ public class LoginDataBaseAdapter {
         cursor.close();
         return getPassword;
     }
-
-    public Cursor fetch() {
-        Cursor cursor = this.db.query();
-        if (cursor != null) {
-            cursor.moveToFirst();
-        }
-        return cursor;
-    }
 }
