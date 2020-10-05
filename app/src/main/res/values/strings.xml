@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">COM594 CW1 2020</string>
+    <string name="edit_username">Username</string>
+    <string name="edit_password">Password</string>
+    <string name="button_login">Login</string>
+    <string name="edit_register">Dont\' have an account?</string>
+    <string name="button_register_here">Register Here</string>
+    <string name="edit_email">Email</string>
+    <string name="button_register">Register</string>
+    <string name="edit_login">Account already?</string>
+    <string name="button_login_here">Login Here</string>
+    <string name="button_male">Male</string>
+    <string name="button_female">Female</string>
+    <string name="edit_welcome">Welcome,</string>
+    <string name="edit_confirm_password">Confirm Password</string>
+    <string name="button_log_out">Log Out</string>
+    <string name="edit_username_reg">Username</string>
+    <string name="edit_password_reg">Password</string>
+    <string name="button_other">Other</string>
+    <string name="edit_gender_value">Gender</string>
+</resources>
