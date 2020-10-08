@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -136,8 +137,21 @@ public class Registration extends AppCompatActivity {
     }
 
     public boolean verifyEmail(String email){
+
+        boolean hasRequirements = false;
+        Pattern emailPattern = Pattern.compile( "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$");
+        Matcher isEmail = emailPattern.matcher(email);
+
+        if(isEmail.find()){
+            hasRequirements = true;
+        }
         if (email.isEmpty()){
             Toast.makeText(getApplicationContext(), "Please enter Email",
+                    Toast.LENGTH_LONG).show();
+            return false;
+        }
+        else if(!hasRequirements){
+            Toast.makeText(getApplicationContext(), "Email is not in valid format",
                     Toast.LENGTH_LONG).show();
             return false;
         }
@@ -145,7 +159,6 @@ public class Registration extends AppCompatActivity {
             return true;
         }
     }
-
 
     public void Register(View view) {
         String username = ((EditText) findViewById(R.id.Username_reg)).getText().toString();
@@ -155,7 +168,7 @@ public class Registration extends AppCompatActivity {
         String gender = Gender;
 
         if (verifyUsername(username)) {
-            if (verifyPassword(password, confirmPassword)) {
+            if (verifyPassword(password,  confirmPassword)) {
                 if (verifyEmail(email)) {
 
                     //Save the Data in Database

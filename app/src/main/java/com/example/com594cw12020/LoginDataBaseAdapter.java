@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.nio.file.attribute.UserPrincipalLookupService;
+import java.util.ArrayList;
 
 public class LoginDataBaseAdapter {
     //Database Version
@@ -73,7 +74,6 @@ public class LoginDataBaseAdapter {
         cursor.close();
         return getPassword;
     }
-
     //fetches all details based off username given
    public String fetch(String un) {
         String details = "";
@@ -104,5 +104,25 @@ public class LoginDataBaseAdapter {
             cursor.close();
             return false;
         }
+    }
+
+    //fetch all details
+    public ArrayList<String> fetchAllDetails() {
+        db = dataBaseHelper.getReadableDatabase();
+        ArrayList<String> details = new ArrayList<String>();
+
+        Cursor cursor = db.query("User", null, null,
+                new String[]{}, null, null, null);
+
+        if (cursor != null) {
+            do {
+                details.add(cursor.getString(cursor.getColumnIndex("userName")));
+                details.add(cursor.getString(cursor.getColumnIndex("userPassword")));
+
+                cursor.moveToNext();
+            }
+            while (!cursor.isAfterLast());
+        }
+        return details;
     }
 }
