@@ -6,12 +6,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.database.Cursor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Welcome extends AppCompatActivity {
     LoginDataBaseAdapter loginDataBaseAdapter;
@@ -28,49 +34,34 @@ public class Welcome extends AppCompatActivity {
         Intent intent = getIntent();
         String loginName = intent.getStringExtra("Name");
         txtname.setText("Welcome, " + loginName);
-
-        String cursor = loginDataBaseAdapter.fetch(loginName);
-        final TextView details = findViewById(R.id.textView2);
-        details.setText(cursor);
-
-        ArrayList<String> wigwag = loginDataBaseAdapter.fetchAllDetails();
-        Log.e("Test", String.valueOf(wigwag));
-        //final TextView foo = findViewById(R.id.textView2);
-        //foo.setText(Arrays.toString(new ArrayList[]{wigwag}));
-
-        //ArrayList<String> test = loginDataBaseAdapter.fetchAllDetails();
-
-
-        //final TextView test = findViewById(R.id.textView3);
-        //test.setText(cursor);
-
-
-        /*TextView txtgender = (TextView) findViewById(R.id.textView2);
-        String loginPassword = intent.getStringExtra("Password");
-        txtgender.setText("Password: " + loginPassword);*/
     }
 
-    /*public void listDetails(View view) {
-        try {
-            String[] textArray = {"One", "Two", "Three", "Four"};
-            for( int i = 0; i < textArray.length; i++ )
-            {
-                TextView textView = new TextView(this);
-                textView.setText(textArray[i]);
+    public void listDetails(View view){
 
-                setContentView(R.layout.activity_welcome);
-            }
-            /*int textViewCount = 10;
+        ArrayList<String> fetchedDetails = loginDataBaseAdapter.fetchAllDetails();
+        List<Map<String, String>> listArray = new ArrayList<>();
 
-            TextView[] textViewArray = new TextView[textViewCount];
+        //String[] userNameArray = new String[]{};
+        //String[] passwordArray = new String[]{};
 
-            for(int i = 0; i < textViewCount; i++) {
-                textViewArray[i] = new TextView(this);
-            }
-        }catch (Exception ex){
-            Log.e("Error", "error login");
+        for(int i=0; i< fetchedDetails.size(); i++)
+        {
+            Log.e("Test", fetchedDetails.get(i));
+            Map<String, String> listItem = new HashMap<>(2);
+            listItem.put("userNameKey", "User Name: " + fetchedDetails.get(i));
+            i++;
+            listItem.put("passwordKey", "Password: " +fetchedDetails.get(i));
+            listArray.add(listItem);
         }
-    }*/
+
+        SimpleAdapter simpleAdapter = new SimpleAdapter(this, listArray, android.R.layout.simple_list_item_2,
+                new String[] {"userNameKey", "passwordKey" },
+                new int[] {android.R.id.text1, android.R.id.text2 });
+
+        ListView listView = findViewById(R.id.listViewAnimals);
+        listView.setAdapter(simpleAdapter);
+
+    }
 
     public void logOut(View view){
         Intent intent = new Intent(this, MainActivity.class);

@@ -109,20 +109,22 @@ public class LoginDataBaseAdapter {
     //fetch all details
     public ArrayList<String> fetchAllDetails() {
         db = dataBaseHelper.getReadableDatabase();
-        ArrayList<String> details = new ArrayList<String>();
+        ArrayList<String> details = new ArrayList<>();
 
         Cursor cursor = db.query("User", null, null,
                 new String[]{}, null, null, null);
 
         if (cursor != null) {
+            cursor.moveToFirst();
             do {
                 details.add(cursor.getString(cursor.getColumnIndex("userName")));
-                details.add(cursor.getString(cursor.getColumnIndex("userPassword")));
+                details.add(cursor.getString(cursor.getColumnIndex("userPassword"))+"/");
 
                 cursor.moveToNext();
             }
             while (!cursor.isAfterLast());
         }
+        cursor.close();
         return details;
     }
 }
