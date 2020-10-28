@@ -4,7 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Registration">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginRight="125dp"
+        android:contentDescription="TODO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_avatar_default"
+        tools:srcCompat="@drawable/icon_avatar_default" />
 
     <EditText
         android:id="@+id/Username_reg"
@@ -12,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
         android:autofillHints=""
@@ -20,11 +38,13 @@
         android:fontFamily="sans-serif"
         android:hint="@string/edit_username_reg"
         android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/Email_reg"
@@ -35,15 +55,17 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
+        android:autofillHints=""
         android:ems="10"
         android:fontFamily="sans-serif"
         android:hint="@string/edit_email"
         android:inputType="textEmailAddress"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Username_reg"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/Username_reg" />
 
     <EditText
         android:id="@+id/Password_reg"
@@ -58,6 +80,8 @@
         android:ems="10"
         android:hint="@string/edit_password_reg"
         android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Email_reg" />
@@ -75,6 +99,8 @@
         android:ems="10"
         android:hint="@string/edit_confirm_password"
         android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Password_reg" />
@@ -88,8 +114,11 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
+        android:background="#0DA1A1"
         android:onClick="Register"
         android:text="@string/button_register"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#047347"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -151,21 +180,24 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="true"
-            android:text="@string/button_male" />
+            android:text="@string/button_male"
+            android:textColor="#FFFFFF" />
 
         <RadioButton
             android:id="@+id/Female_radioButton"
             android:layout_width="5dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/button_female" />
+            android:text="@string/button_female"
+            android:textColor="#FFFFFF" />
 
         <RadioButton
             android:id="@+id/Other_radioButton"
             android:layout_width="5dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/button_other" />
+            android:text="@string/button_other"
+            android:textColor="#FFFFFF" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

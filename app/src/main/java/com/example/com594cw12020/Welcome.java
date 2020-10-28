@@ -58,7 +58,7 @@ public class Welcome extends AppCompatActivity {
                 new String[] {"userNameKey", "passwordKey" },
                 new int[] {android.R.id.text1, android.R.id.text2 });
 
-        ListView listView = findViewById(R.id.listViewAnimals);
+        ListView listView = findViewById(R.id.users);
         listView.setAdapter(simpleAdapter);
 
     }
